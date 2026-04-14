@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>200 Receitas Brasileiras – Sabores do Brasil na Sua Cozinha</title>
+<meta name="description" content="200 receitas tradicionais brasileiras com ingredientes simples. Feijoada, moqueca, brigadeiro e muito mais. Acesse agora em PDF.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Nunito:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:    #0a0f0a;
+  --dark:     #111811;
+  --card:     #141f14;
+  --border:   #1e2e1e;
+  --green:    #2db84b;
+  --green-l:  #3de05e;
+  --green-d:  #1a8c35;
+  --green-xs: rgba(45,184,75,0.08);
+  --lime:     #a3ff6e;
+  --fog:      #607860;
+  --mist:     #9db89d;
+  --cream:    #eef5ee;
+  --white:    #ffffff;
+  --gold:     #d4a840;
+  --font-h:   'Playfair Display', serif;
+  --font-b:   'Nunito', sans-serif;
+  --font-d:   'Bebas Neue', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: var(--font-b);
+  overflow-x: hidden;
+}
+
+/* NOISE TEXTURE */
+body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+section, div { position: relative; z-index: 1; }
+
+/* ====== URGENCY BAR ====== */
+.urgency-bar {
+  background: var(--green-d);
+  padding: 11px 20px;
+  text-align: center;
+  font-family: var(--font-d);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  color: #fff;
+  position: sticky; top: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  animation: pulse-bar 2.5s ease-in-out infinite;
+}
+@keyframes pulse-bar {
+  0%,100% { background: var(--green-d); }
+  50%      { background: #1faf3f; }
+}
+.urgency-bar .cd-inline {
+  background: rgba(0,0,0,0.35);
+  padding: 2px 14px;
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+}
+.urgency-bar a { color: #fff; text-decoration: underline; }
+
+/* ====== TICKER ====== */
+.social-ticker {
+  background: #0d120d;
+  border-bottom: 1px solid var(--border);
+  padding: 9px 0; overflow: hidden;
+}
+.ticker-track {
+  display: flex; gap: 56px;
+  animation: ticker 35s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-item {
+  font-family: var(--font-d);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: var(--fog);
+  display: flex; align-items: center; gap: 8px;
+  flex-shrink: 0;
+}
+.ticker-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; animation: blink 1.5s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.ticker-item strong { color: var(--cream); }
+
+/* ====== HERO ====== */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px 7vw 70px;
+  gap: 70px;
+  border-bottom: 2px solid var(--green-d);
+  background:
+    radial-gradient(ellipse at 65% 35%, rgba(45,184,75,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(45,184,75,0.06) 0%, transparent 40%),
+    linear-gradient(160deg, #080e08 0%, #0f170f 100%);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green); color: #000;
+  font-family: var(--font-d); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 6px 18px; margin-bottom: 10px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+}
+.scarcity-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(45,184,75,0.1);
+  border: 1px solid var(--green-d);
+  color: var(--lime);
+  font-family: var(--font-d); font-size: 0.8rem; letter-spacing: 0.12em;
+  padding: 6px 14px; margin-bottom: 20px;
+  animation: glow-g 2s ease-in-out infinite;
+}
+@keyframes glow-g {
+  0%,100% { box-shadow: 0 0 8px rgba(45,184,75,0.2); }
+  50%      { box-shadow: 0 0 22px rgba(45,184,75,0.5); }
+}
+.scarcity-badge .fire { animation: shake 0.6s ease-in-out infinite; display: inline-block; }
+@keyframes shake { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)} }
+
+.hero h1 {
+  font-family: var(--font-h);
+  font-size: clamp(2.8rem, 4.5vw, 5.2rem);
+  line-height: 1.0; color: #fff; margin-bottom: 22px;
+}
+.hero h1 em { color: var(--green); font-style: normal; display: block; }
+.hero-desc { font-size: 1.05rem; font-weight: 400; line-height: 1.75; color: var(--mist); max-width: 480px; margin-bottom: 24px; }
+
+/* PRICE */
+.price-anchor { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+.price-was { font-family: var(--font-d); font-size: 1.2rem; color: #4a5a4a; text-decoration: line-through; letter-spacing: 0.06em; }
+.price-now { font-family: var(--font-d); font-size: 3.2rem; color: var(--green); line-height: 1; }
+.price-save {
+  background: var(--lime); color: #000;
+  font-family: var(--font-d); font-size: 0.78rem; letter-spacing: 0.1em;
+  padding: 4px 12px;
+}
+.price-note { font-family: var(--font-b); font-size: 0.8rem; color: var(--fog); margin-bottom: 24px; }
+.price-note strong { color: var(--green); }
+
+/* STOCK METER */
+.stock-meter { margin-bottom: 26px; }
+.stock-label {
+  font-family: var(--font-d); font-size: 0.78rem; letter-spacing: 0.12em;
+  color: var(--lime); margin-bottom: 7px;
+  display: flex; align-items: center; gap: 8px;
+}
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+  animation: pulse-dot 1s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+.stock-bar-track { height: 6px; background: #1e2e1e; border-radius: 3px; overflow: hidden; max-width: 320px; }
+.stock-bar-fill {
+  height: 100%; width: 73%;
+  background: linear-gradient(90deg, var(--green-d), var(--green));
+  border-radius: 3px;
+  animation: bar-shrink 120s linear forwards;
+}
+@keyframes bar-shrink { to { width: 55%; } }
+
+/* BUTTONS */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--green);
+  color: #000;
+  font-family: var(--font-d); font-size: 1.1rem; letter-spacing: 0.1em;
+  padding: 18px 48px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  animation: cta-pulse 2.5s ease-in-out infinite;
+  position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+@keyframes shimmer { 0%{transform:translateX(-100%)} 60%,100%{transform:translateX(100%)} }
+@keyframes cta-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(45,184,75,0)} 50%{box-shadow:0 0 0 10px rgba(45,184,75,0.25)} }
+.btn-primary:hover { background: var(--green-l); transform: translateY(-2px); }
+.btn-primary .arrow { font-size: 1.3rem; }
+
+.trust-row {
+  display: flex; gap: 20px; margin-top: 18px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-b); font-size: 0.78rem; color: var(--fog);
+}
+.trust-item span { font-size: 1rem; }
+
+/* HERO VISUAL */
+.hero-visual {
+  position: relative; display: flex; justify-content: center; align-items: center;
+}
+.book-wrap {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+}
+.book-cover {
+  width: min(380px, 90vw);
+  border-radius: 8px;
+  box-shadow:
+    -20px 20px 60px rgba(0,0,0,0.8),
+    0 0 80px rgba(45,184,75,0.18),
+    inset -4px 0 12px rgba(0,0,0,0.5);
+  transform: perspective(1000px) rotateY(-8deg) rotateX(2deg);
+  transition: transform 0.4s ease;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100%{ transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(0); }
+  50%     { transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(-12px); }
+}
+.book-wrap:hover .book-cover { transform: perspective(1000px) rotateY(-3deg) rotateX(1deg); animation-play-state: paused; }
+
+.stat-bubble {
+  position: absolute;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 12px 18px;
+  font-family: var(--font-d);
+  color: var(--cream);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  animation: float2 3s ease-in-out infinite;
+}
+.stat-bubble strong { color: var(--green); font-size: 1.4rem; display: block; line-height: 1; }
+.stat-bubble.s1 { top: 10%; right: -30px; animation-delay: 0s; }
+.stat-bubble.s2 { bottom: 15%; left: -30px; animation-delay: 1.5s; }
+@keyframes float2 {
+  0%,100%{ transform: translateY(0); }
+  50%    { transform: translateY(-8px); }
+}
+.glow-ring {
+  position: absolute; inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,184,75,0.1) 0%, transparent 70%);
+  pointer-events: none;
+  animation: ring-pulse 3s ease-in-out infinite;
+}
+@keyframes ring-pulse { 0%,100%{opacity:0.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.05)} }
+
+/* LIVE VIEWERS */
+.live-viewers {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid #1e2e1e;
+  padding: 6px 14px; margin-bottom: 18px;
+  font-family: var(--font-d); font-size: 0.82rem; letter-spacing: 0.1em; color: var(--fog);
+}
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: #e03030; animation: blink 1s ease-in-out infinite; }
+.live-count { color: var(--cream); font-size: 1rem; }
+
+/* DIVIDER */
+.green-divider { height: 3px; background: linear-gradient(90deg, transparent, var(--green-d), var(--green), var(--green-d), transparent); margin: 0; border: none; }
+
+/* FADE UP */
+.fade-up { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* SECTIONS */
+.section-label {
+  font-family: var(--font-d); font-size: 0.78rem; letter-spacing: 0.22em;
+  color: var(--green); text-transform: uppercase; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::before, .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.section-title {
+  font-family: var(--font-h); font-size: clamp(2.2rem, 4vw, 3.8rem);
+  color: var(--white); line-height: 1.1; margin-bottom: 16px;
+}
+.section-subtitle { font-size: 1.05rem; color: var(--mist); line-height: 1.7; max-width: 600px; margin: 0 auto 50px; }
+
+/* PAIN/DREAM SECTION */
+.pain-section {
+  padding: 90px 7vw;
+  text-align: center;
+  background: linear-gradient(160deg, #0d150d 0%, var(--black) 100%);
+}
+.pain-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; max-width: 900px; margin: 0 auto 50px;
+}
+.pain-card {
+  background: rgba(180,0,0,0.07);
+  border: 1px solid rgba(180,0,0,0.2);
+  padding: 24px 28px;
+  text-align: left;
+  transition: border-color 0.2s;
+}
+.pain-card:hover { border-color: rgba(180,0,0,0.4); }
+.pain-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+.pain-card h4 { font-family: var(--font-b); font-size: 0.95rem; font-weight: 700; color: #ff9999; margin-bottom: 6px; }
+.pain-card p { font-size: 0.88rem; color: var(--fog); line-height: 1.6; }
+.dream-arrow { font-size: 2.5rem; color: var(--green); margin: 10px 0; }
+.dream-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; max-width: 900px; margin: 0 auto;
+}
+.dream-card {
+  background: rgba(45,184,75,0.06);
+  border: 1px solid rgba(45,184,75,0.18);
+  padding: 24px 28px;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+}
+.dream-card:hover { background: rgba(45,184,75,0.1); border-color: rgba(45,184,75,0.35); }
+.dream-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+.dream-card h4 { font-family: var(--font-b); font-size: 0.95rem; font-weight: 700; color: var(--lime); margin-bottom: 6px; }
+.dream-card p { font-size: 0.88rem; color: var(--mist); line-height: 1.6; }
+
+/* WHAT'S INSIDE */
+.contents-section {
+  padding: 90px 7vw;
+  text-align: center;
+  background: var(--dark);
+}
+.contents-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; max-width: 1100px; margin: 0 auto;
+}
+.content-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  text-align: left;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.content-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--green-d), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.content-card:hover { border-color: var(--green-d); transform: translateY(-4px); }
+.content-card:hover::before { opacity: 1; }
+.content-card .cat-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+.content-card h3 { font-family: var(--font-h); font-size: 1.15rem; color: var(--white); margin-bottom: 8px; }
+.content-card p { font-size: 0.85rem; color: var(--fog); line-height: 1.65; }
+.content-card .count { font-family: var(--font-d); font-size: 0.78rem; letter-spacing: 0.12em; color: var(--green); margin-top: 12px; }
+
+/* FEATURES */
+.features-section {
+  padding: 90px 7vw;
+  background: linear-gradient(160deg, var(--black) 0%, #0d150d 100%);
+}
+.features-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.features-list { list-style: none; }
+.features-list li {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.features-list li:last-child { border-bottom: none; }
+.feature-check { color: var(--green); font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.feature-text h4 { font-family: var(--font-b); font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.feature-text p { font-size: 0.85rem; color: var(--fog); line-height: 1.6; }
+.features-img-wrap { position: relative; }
+.features-img-wrap img { width: 100%; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(45,184,75,0.12); }
+.features-img-wrap::after {
+  content: '';
+  position: absolute; inset: -2px;
+  border-radius: 8px;
+  border: 2px solid var(--green-d);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* VALUE STACK */
+.value-section {
+  padding: 90px 7vw;
+  text-align: center;
+  background: var(--dark);
+}
+.value-table { max-width: 700px; margin: 0 auto; }
+.value-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  background: var(--card);
+  gap: 20px;
+}
+.value-row:first-child { border-radius: 8px 8px 0 0; }
+.value-row:last-of-type { border-bottom: 1px solid var(--border); }
+.value-left { display: flex; align-items: center; gap: 16px; text-align: left; }
+.value-icon { font-size: 1.6rem; flex-shrink: 0; }
+.value-name { font-family: var(--font-b); font-weight: 600; color: var(--white); font-size: 0.95rem; }
+.value-desc { font-size: 0.8rem; color: var(--fog); margin-top: 2px; }
+.value-price { font-family: var(--font-d); font-size: 1.1rem; color: var(--mist); white-space: nowrap; }
+.value-total-row {
+  margin-top: 16px;
+  background: rgba(45,184,75,0.07);
+  border: 1px solid var(--green-d);
+  padding: 24px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.total-label { font-family: var(--font-d); font-size: 1.1rem; letter-spacing: 0.1em; color: var(--mist); }
+.total-label span { display: block; font-size: 0.8rem; color: var(--fog); margin-top: 4px; }
+.total-you { text-align: right; }
+.you-label { font-family: var(--font-d); font-size: 0.8rem; letter-spacing: 0.12em; color: var(--fog); }
+.you-price { font-family: var(--font-d); font-size: 3rem; color: var(--green); line-height: 1; }
+.you-price sup { font-size: 1rem; vertical-align: super; }
+
+/* TESTIMONIALS */
+.testimonials-section {
+  padding: 90px 7vw;
+  text-align: center;
+  background: linear-gradient(160deg, #0d150d 0%, var(--black) 100%);
+}
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; max-width: 1100px; margin: 0 auto;
+}
+.testimonial-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px 26px;
+  text-align: left;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.testimonial-card:hover { border-color: var(--green-d); transform: translateY(-4px); }
+.stars { color: var(--gold); font-size: 0.95rem; margin-bottom: 14px; letter-spacing: 2px; }
+.testimonial-text { font-size: 0.9rem; color: var(--mist); line-height: 1.7; margin-bottom: 20px; }
+.testimonial-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-d), var(--green));
+  color: #000; font-family: var(--font-d); font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.author-name { font-family: var(--font-b); font-weight: 700; color: var(--white); font-size: 0.9rem; }
+.author-role { font-size: 0.78rem; color: var(--fog); }
+.verified-tag { font-size: 0.7rem; color: var(--green); margin-top: 2px; }
+
+/* FAQ */
+.faq-section {
+  padding: 90px 7vw;
+  background: var(--dark);
+}
+.faq-inner { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 20px 24px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  cursor: pointer;
+  font-family: var(--font-b); font-weight: 700; color: var(--white); font-size: 0.95rem;
+  background: var(--card);
+  transition: background 0.2s;
+}
+.faq-q:hover { background: #182818; }
+.faq-arrow { color: var(--green); font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  padding: 0 24px;
+  font-size: 0.88rem; color: var(--fog); line-height: 1.75;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  background: var(--card);
+  border-top: 0px solid transparent;
+}
+.faq-item.open .faq-a {
+  max-height: 200px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* CTA SECTION */
+.cta-section {
+  padding: 100px 7vw;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(45,184,75,0.12) 0%, transparent 60%),
+    linear-gradient(160deg, #0d150d 0%, var(--black) 100%);
+}
+.cta-section .section-title { font-size: clamp(2.4rem, 5vw, 5rem); }
+.countdown-label { font-family: var(--font-d); font-size: 0.9rem; letter-spacing: 0.12em; color: var(--fog); margin-bottom: 24px; }
+.big-countdown {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-bottom: 36px;
+}
+.cd-unit { text-align: center; }
+.cd-num {
+  display: block;
+  font-family: var(--font-d); font-size: clamp(2.5rem, 5vw, 4.5rem);
+  color: var(--white);
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 12px 22px;
+  min-width: 80px;
+  letter-spacing: 0.06em;
+}
+.cd-label { font-family: var(--font-d); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--fog); margin-top: 6px; }
+.cd-sep { font-family: var(--font-d); font-size: clamp(2rem, 4vw, 3.5rem); color: var(--green); padding-bottom: 28px; }
+.cta-price-block { display: flex; align-items: baseline; justify-content: center; gap: 14px; margin-bottom: 16px; }
+.price-original { font-family: var(--font-d); font-size: 1.5rem; color: #3a4a3a; text-decoration: line-through; letter-spacing: 0.06em; }
+.price-current { font-family: var(--font-d); font-size: clamp(3rem, 6vw, 5.5rem); color: var(--green); line-height: 1; }
+.price-currency { font-family: var(--font-d); font-size: 1.4rem; color: var(--fog); }
+.cta-perks { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 30px; }
+.cta-perk {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-d); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--mist);
+}
+
+.guarantee-box {
+  display: flex; align-items: center; gap: 20px;
+  background: rgba(45,184,75,0.06);
+  border: 1px solid var(--green-d);
+  padding: 24px 32px;
+  max-width: 560px; margin: 32px auto 0;
+  text-align: left;
+}
+.guarantee-icon { font-size: 2.8rem; flex-shrink: 0; }
+.guarantee-title { font-family: var(--font-b); font-weight: 800; color: var(--white); font-size: 1rem; margin-bottom: 6px; }
+.guarantee-text { font-size: 0.85rem; color: var(--fog); line-height: 1.65; }
+.hotmart-note { font-family: var(--font-d); font-size: 0.78rem; letter-spacing: 0.1em; color: #2a3a2a; margin-top: 20px; }
+
+/* STICKY CTA */
+.sticky-cta {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+  background: #0d150d;
+  border-top: 2px solid var(--green-d);
+  padding: 12px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  box-shadow: 0 -10px 40px rgba(45,184,75,0.15);
+}
+.sticky-cta.visible { transform: translateY(0); }
+.sticky-left {}
+.sticky-name { font-family: var(--font-d); font-size: 0.9rem; letter-spacing: 0.1em; color: var(--mist); }
+.sticky-price { font-family: var(--font-d); font-size: 1.2rem; color: var(--green); letter-spacing: 0.06em; }
+.sticky-price s { color: #3a4a3a; font-size: 0.9rem; }
+.btn-sticky {
+  background: var(--green); color: #000;
+  font-family: var(--font-d); font-size: 0.9rem; letter-spacing: 0.1em;
+  padding: 12px 28px; text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.btn-sticky:hover { background: var(--green-l); }
+
+/* PURCHASE POPUP */
+.purchase-popup {
+  position: fixed; bottom: 80px; left: 20px; z-index: 9999;
+  background: var(--card);
+  border: 1px solid var(--green-d);
+  padding: 14px 18px;
+  max-width: 260px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 20px rgba(45,184,75,0.12);
+  transform: translateX(-120%);
+  transition: transform 0.4s ease;
+}
+.purchase-popup.show { transform: translateX(0); }
+.popup-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.popup-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: blink 1s ease-in-out infinite; }
+.popup-action { font-family: var(--font-d); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--green); }
+.popup-name { font-family: var(--font-b); font-weight: 700; color: var(--white); font-size: 0.88rem; }
+.popup-detail { font-size: 0.78rem; color: var(--fog); margin-top: 2px; }
+
+/* FOOTER */
+footer {
+  padding: 40px 7vw;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: #080e08;
+}
+footer p { font-family: var(--font-d); font-size: 0.8rem; letter-spacing: 0.08em; color: #2a3a2a; }
+footer p + p { margin-top: 6px; }
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 70px 6vw 60px;
+    gap: 50px;
+    text-align: center;
+    min-height: auto;
+  }
+  .hero-desc { max-width: 100%; }
+  .price-anchor { justify-content: center; }
+  .trust-row { justify-content: center; }
+  .stock-bar-track { margin: 0 auto; }
+  .stock-label { justify-content: center; }
+  .btn-primary { width: 100%; justify-content: center; }
+
+  .hero-visual { order: -1; }
+  .book-cover { width: min(300px, 80vw); }
+  .stat-bubble.s1 { top: 5%; right: -10px; }
+  .stat-bubble.s2 { bottom: 5%; left: -10px; }
+
+  .pain-grid, .dream-grid { grid-template-columns: 1fr; }
+  .features-inner { grid-template-columns: 1fr; }
+  .features-img-wrap { order: -1; }
+  .cta-price-block { flex-wrap: wrap; }
+  .guarantee-box { flex-direction: column; text-align: center; }
+  .sticky-cta { padding: 10px 16px; gap: 10px; }
+
+  .live-viewers { margin: 0 auto 18px; }
+  .scarcity-badge, .hero-badge { display: inline-flex; }
+}
+
+@media (max-width: 540px) {
+  .urgency-bar { font-size: 0.78rem; gap: 8px; }
+  .section-title { font-size: clamp(1.8rem, 7vw, 3rem); }
+  .big-countdown { gap: 4px; }
+  .cd-num { font-size: 2rem; padding: 10px 14px; min-width: 60px; }
+  .cd-sep { font-size: 1.8rem; }
+  .contents-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== URGENCY BAR ====== -->
+<div class="urgency-bar">
+  <span>🔥 OFERTA DE LANÇAMENTO — Termina em:</span>
+  <span class="cd-inline" id="bar-countdown">02:00:00</span>
+  <a href="https://pay.hotmart.com/W104977351F" target="_blank">QUERO APROVEITAR →</a>
+</div>
+
+<!-- ====== SOCIAL PROOF TICKER ====== -->
+<div class="social-ticker">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item"><span class="dot"></span><strong>Ana · São Paulo</strong> acabou de comprar</span>
+    <span class="ticker-item"><span class="dot"></span><strong>200 Receitas</strong> já ajudaram mais de 3.000 famílias</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Marcos · Rio de Janeiro</strong> está baixando agora</span>
+    <span class="ticker-item"><span class="dot"></span><strong>⭐⭐⭐⭐⭐</strong> — Avaliação média dos compradores</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Carla · Belo Horizonte</strong> acabou de comprar</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Acesso imediato</strong> após o pagamento · PDF de alta qualidade</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Juliana · Curitiba</strong> está lendo agora</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Garantia de 7 dias</strong> — Risco zero para você</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="dot"></span><strong>Ana · São Paulo</strong> acabou de comprar</span>
+    <span class="ticker-item"><span class="dot"></span><strong>200 Receitas</strong> já ajudaram mais de 3.000 famílias</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Marcos · Rio de Janeiro</strong> está baixando agora</span>
+    <span class="ticker-item"><span class="dot"></span><strong>⭐⭐⭐⭐⭐</strong> — Avaliação média dos compradores</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Carla · Belo Horizonte</strong> acabou de comprar</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Acesso imediato</strong> após o pagamento · PDF de alta qualidade</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Juliana · Curitiba</strong> está lendo agora</span>
+    <span class="ticker-item"><span class="dot"></span><strong>Garantia de 7 dias</strong> — Risco zero para você</span>
+  </div>
+</div>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="live-viewers">
+      <span class="live-dot"></span>
+      <span><span class="live-count" id="live-count">27</span> pessoas vendo esta página agora</span>
+    </div>
+
+    <div class="hero-badge">📚 Livro Digital em PDF</div>
+    <div class="scarcity-badge">
+      <span class="fire">🔥</span>
+      PREÇO ESPECIAL — SÓ POR TEMPO LIMITADO
+    </div>
+
+    <h1>
+      200 Receitas<br>
+      <em>Brasileiras</em>
+      que vão transformar<br>sua cozinha
+    </h1>
+    <p class="hero-desc">
+      De feijoada a brigadeiro, de moqueca a coxinha — as <strong style="color:var(--cream)">200 receitas mais amadas do Brasil</strong> reunidas num único livro digital. Ingredientes simples, passo a passo claro, resultado garantido na sua mesa.
+    </p>
+
+    <div class="price-anchor">
+      <span class="price-was">R$173</span>
+      <span class="price-now">R$69</span>
+      <span class="price-save">70% OFF</span>
+    </div>
+    <p class="price-note">Pagamento único · <strong>Acesso imediato</strong> · Para sempre seu</p>
+
+    <div class="stock-meter">
+      <div class="stock-label">
+        <span class="pulse-dot"></span>
+        DEMANDA ALTA — OFERTA ENCERRANDO EM BREVE
+      </div>
+      <div class="stock-bar-track">
+        <div class="stock-bar-fill"></div>
+      </div>
+    </div>
+
+    <a href="https://pay.hotmart.com/W104977351F" target="_blank" class="btn-primary">
+      SIM, QUERO MINHAS RECEITAS <span class="arrow">→</span>
+    </a>
+
+    <div class="trust-row">
+      <div class="trust-item"><span>🔒</span> Pagamento seguro</div>
+      <div class="trust-item"><span>📱</span> Celular, tablet & PC</div>
+      <div class="trust-item"><span>⚡</span> Acesso instantâneo</div>
+      <div class="trust-item"><span>🛡️</span> Garantia 7 dias</div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="book-wrap">
+      <div class="glow-ring"></div>
+      <img class="book-cover" src="200.jpg" alt="Livro 200 Receitas Brasileiras">
+      <div class="stat-bubble s1"><strong>200</strong>Receitas exclusivas</div>
+      <div class="stat-bubble s2"><strong>3.000+</strong>Famílias satisfeitas</div>
+    </div>
+  </div>
+</section>
+
+<hr class="green-divider">
+
+<!-- ====== PAIN / DREAM ====== -->
+<section class="pain-section fade-up">
+  <div class="section-label">Você se identifica?</div>
+  <h2 class="section-title">A cozinha não precisa<br>ser um campo minado</h2>
+  <p class="section-subtitle">Muita gente ama comer comida brasileira de verdade — mas na hora de cozinhar, bate o desespero.</p>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="icon">😩</div>
+      <h4>Pesquisa no Google por horas</h4>
+      <p>Você abre dez abas diferentes para cada receita e ainda assim fica inseguro sobre as medidas certas.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">😞</div>
+      <h4>Prato que não sai como na lembrança</h4>
+      <p>Tentou fazer a feijoada da vó ou o bolo de cenoura da infância e não ficou nem parecido.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">🤷</div>
+      <h4>Cardápio repetitivo toda semana</h4>
+      <p>Arroz, feijão e frango de novo. Você quer variar, mas não sabe por onde começar.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">💸</div>
+      <h4>Desperdício de ingredientes</h4>
+      <p>Comprou tudo certo, errou a receita, jogou fora. O dinheiro vai embora junto com a motivação.</p>
+    </div>
+  </div>
+
+  <div class="dream-arrow">↓</div>
+
+  <div class="dream-grid">
+    <div class="dream-card">
+      <div class="icon">🍽️</div>
+      <h4>Receitas testadas e aprovadas</h4>
+      <p>Cada prato do livro tem medidas precisas e um passo a passo claro para qualquer nível de cozinheiro.</p>
+    </div>
+    <div class="dream-card">
+      <div class="icon">❤️</div>
+      <h4>Sabores que tocam a alma</h4>
+      <p>Reconecte-se com a tradição culinária do Brasil — da Bahia ao Sul, da fazenda ao litoral.</p>
+    </div>
+    <div class="dream-card">
+      <div class="icon">🎉</div>
+      <h4>Impressione na próxima reunião</h4>
+      <p>Salgados, pratos principais, sobremesas e drinks — você vai ter sempre algo especial para servir.</p>
+    </div>
+    <div class="dream-card">
+      <div class="icon">⏱️</div>
+      <h4>Tempo e dinheiro poupados</h4>
+      <p>Ingredientes simples, instruções diretas. Sem desperdício, sem tentativas frustradas.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="green-divider">
+
+<!-- ====== WHAT'S INSIDE ====== -->
+<section class="contents-section fade-up">
+  <div class="section-label">O que tem dentro</div>
+  <h2 class="section-title">200 receitas organizadas<br>por categoria</h2>
+  <p class="section-subtitle">Do café da manhã à sobremesa, do petisco ao prato principal — a gastronomia brasileira completa num único PDF.</p>
+
+  <div class="contents-grid">
+    <div class="content-card">
+      <span class="cat-icon">🥩</span>
+      <h3>Carnes & Grelhados</h3>
+      <p>Picanha na chapa, frango assado, carne de panela, costela, espetinhos e muito mais para os dias especiais.</p>
+      <div class="count">30+ RECEITAS</div>
+    </div>
+    <div class="content-card">
+      <span class="cat-icon">🍲</span>
+      <h3>Pratos Tradicionais</h3>
+      <p>Feijoada completa, bobó de camarão, moqueca baiana, frango com quiabo, tutu à mineira e outras joias da cozinha brasileira.</p>
+      <div class="count">40+ RECEITAS</div>
+    </div>
+    <div class="content-card">
+      <span class="cat-icon">🍠</span>
+      <h3>Acompanhamentos & Petiscos</h3>
+      <p>Coxinha, bolinho de bacalhau, acarajé, pastel, pão de queijo e os melhores acompanhamentos do cotidiano.</p>
+      <div class="count">35+ RECEITAS</div>
+    </div>
+    <div class="content-card">
+      <span class="cat-icon">🎂</span>
+      <h3>Doces & Sobremesas</h3>
+      <p>Brigadeiro, bolo de cenoura, pudim de leite, quindim, cocada, mousse de maracujá e os clássicos de toda mesa de festa.</p>
+      <div class="count">40+ RECEITAS</div>
+    </div>
+    <div class="content-card">
+      <span class="cat-icon">🥣</span>
+      <h3>Café da Manhã & Lanches</h3>
+      <p>Tapioca, beiju, vitaminas tropicais, mingau, cuscuz nordestino e tudo para começar o dia com sabor brasileiro.</p>
+      <div class="count">25+ RECEITAS</div>
+    </div>
+    <div class="content-card">
+      <span class="cat-icon">🍹</span>
+      <h3>Bebidas & Drinks</h3>
+      <p>Caipirinha clássica e com frutas, limonada suíça, suco de cajá, licores artesanais e quentão junino.</p>
+      <div class="count">20+ RECEITAS</div>
+    </div>
+  </div>
+</section>
+
+<hr class="green-divider">
+
+<!-- ====== FEATURES ====== -->
+<section class="features-section fade-up">
+  <div style="max-width:1100px;margin:0 auto;text-align:center;margin-bottom:60px;">
+    <div class="section-label">Por que este livro</div>
+    <h2 class="section-title">Feito para funcionar<br>na sua vida real</h2>
+  </div>
+
+  <div class="features-inner">
+    <ul class="features-list">
+      <li>
+        <span class="feature-check">✔</span>
+        <div class="feature-text">
+          <h4>Linguagem simples e direta</h4>
+          <p>Nada de termos técnicos complicados. Qualquer pessoa, do iniciante ao experiente, consegue seguir cada passo.</p>
+        </div>
+      </li>
+      <li>
+        <span class="feature-check">✔</span>
+        <div class="feature-text">
+          <h4>Ingredientes fáceis de encontrar</h4>
+          <p>Todas as receitas usam ingredientes disponíveis em qualquer mercado ou quitanda do Brasil e do exterior.</p>
+        </div>
+      </li>
+      <li>
+        <span class="feature-check">✔</span>
+        <div class="feature-text">
+          <h4>PDF de alta qualidade</h4>
+          <p>Formatação limpa, leitura confortável em qualquer tela — celular, tablet ou computador. Imprima quando quiser.</p>
+        </div>
+      </li>
+      <li>
+        <span class="feature-check">✔</span>
+        <div class="feature-text">
+          <h4>Acesso vitalício</h4>
+          <p>Compre uma vez e tenha o livro para sempre. Baixe, salve, compartilhe com a família.</p>
+        </div>
+      </li>
+      <li>
+        <span class="feature-check">✔</span>
+        <div class="feature-text">
+          <h4>Entrega imediata via Hotmart</h4>
+          <p>Após o pagamento, acessa na mesma hora. Plataforma 100% segura e confiável, usada por milhões de brasileiros.</p>
+        </div>
+      </li>
+      <li>
+        <span class="feature-check">✔</span>
+        <div class="feature-text">
+          <h4>Gastronomia de Norte a Sul</h4>
+          <p>Representação real da diversidade culinária brasileira — Nordeste, Sudeste, Sul, Centro-Oeste e Norte.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="features-img-wrap">
+      <img src="200_1.jpg" alt="200 Receitas Brasileiras — Preview do livro">
+    </div>
+  </div>
+</section>
+
+<hr class="green-divider">
+
+<!-- ====== VALUE STACK ====== -->
+<section class="value-section fade-up">
+  <div class="section-label">O que você leva</div>
+  <h2 class="section-title">Tudo isso por<br>um único preço</h2>
+  <p class="section-subtitle" style="margin-bottom:40px;">Veja o valor real do que entra no seu acesso hoje.</p>
+
+  <div class="value-table">
+    <div class="value-row">
+      <div class="value-left">
+        <span class="value-icon">📖</span>
+        <div>
+          <div class="value-name">200 Receitas Brasileiras — PDF Completo</div>
+          <div class="value-desc">6 categorias, 200 receitas com passo a passo detalhado</div>
+        </div>
+      </div>
+      <div class="value-price">R$89</div>
+    </div>
+    <div class="value-row">
+      <div class="value-left">
+        <span class="value-icon">🍽️</span>
+        <div>
+          <div class="value-name">Guia de substituição de ingredientes</div>
+          <div class="value-desc">Adapte receitas ao que você tem em casa</div>
+        </div>
+      </div>
+      <div class="value-price">R$73</div>
+    </div>
+    <div class="value-row">
+      <div class="value-left">
+        <span class="value-icon">📅</span>
+        <div>
+          <div class="value-name">Tabela de medidas e conversões</div>
+          <div class="value-desc">Nunca mais erre as quantidades</div>
+        </div>
+      </div>
+      <div class="value-price">R$9</div>
+    </div>
+    <div class="value-row">
+      <div class="value-left">
+        <span class="value-icon">📱</span>
+        <div>
+          <div class="value-name">Acesso em todos os dispositivos</div>
+          <div class="value-desc">Celular, tablet, computador — sempre disponível</div>
+        </div>
+      </div>
+      <div class="value-price" style="color:var(--green)">Incluso</div>
+    </div>
+    <div class="value-total-row">
+      <div class="total-label">
+        Valor Total Real
+        <span>Você leva tudo isso por apenas:</span>
+      </div>
+      <div class="total-you">
+        <div class="you-label">SÓ HOJE</div>
+        <div class="you-price"><sup>R$</sup>69</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;">
+    <a href="https://pay.hotmart.com/W104977351F" target="_blank" class="btn-primary" style="font-size:1.1rem;padding:20px 56px;">
+      QUERO MEU LIVRO AGORA <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<hr class="green-divider">
+
+<!-- ====== TESTIMONIALS ====== -->
+<section class="testimonials-section fade-up">
+  <div class="section-label">O que dizem os compradores</div>
+  <h2 class="section-title">Mais de 3.000 famílias<br>já transformaram a cozinha</h2>
+
+  <div class="testimonials-grid" style="margin-top:50px;">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Comprei sem esperar muito e fui completamente surpreendida. A moqueca ficou igual à da minha avó! Texto claro, ingredientes que encontro perto de casa. Já fiz mais de 20 receitas.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">A</div>
+        <div>
+          <div class="author-name">Ana Paula Ferreira</div>
+          <div class="author-role">Dona de casa · São Paulo – SP</div>
+          <div class="verified-tag">✓ Compra verificada</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Moro fora do Brasil há 6 anos e esse livro foi uma terapia. Consegui fazer brigadeiro, coxinha e até feijoada aqui na Alemanha. Meus amigos alemães ficaram loucos!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">L</div>
+        <div>
+          <div class="author-name">Lucas Martins</div>
+          <div class="author-role">Engenheiro · Frankfurt, Alemanha</div>
+          <div class="verified-tag">✓ Compra verificada</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Uso nas aulas de culinária que dou no meu bairro. A organização do PDF é excelente, as medidas são precisas e meus alunos adoram. Vale muito mais do que paguei.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">M</div>
+        <div>
+          <div class="author-name">Márcia Souza</div>
+          <div class="author-role">Professora de culinária · Curitiba – PR</div>
+          <div class="verified-tag">✓ Compra verificada</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Dei de presente para minha mãe e ela não parou mais de cozinhar. Todo final de semana agora é uma novidade na mesa. Família feliz e comida boa — que mais precisamos?</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">R</div>
+        <div>
+          <div class="author-name">Rafael Oliveira</div>
+          <div class="author-role">Administrador · Recife – PE</div>
+          <div class="verified-tag">✓ Compra verificada</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Fiz o pudim de leite condensado pela primeira vez seguindo o passo a passo e deu CERTO na primeira tentativa. Chorei de emoção. Parecia impossível e foi simples.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">J</div>
+        <div>
+          <div class="author-name">Juliana Costa</div>
+          <div class="author-role">Estudante · Belo Horizonte – MG</div>
+          <div class="verified-tag">✓ Compra verificada</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Sou do interior da Bahia e nunca encontrei um livro que reunisse tão bem a cozinha nordestina com os pratos do Sul. Finalmente um livro que representa o Brasil de verdade.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">C</div>
+        <div>
+          <div class="author-name">Carlos Eduardo Nunes</div>
+          <div class="author-role">Comerciante · Salvador – BA</div>
+          <div class="verified-tag">✓ Compra verificada</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="green-divider">
+
+<!-- ====== FAQ ====== -->
+<section class="faq-section fade-up">
+  <div style="text-align:center; margin-bottom:50px;">
+    <div class="section-label">Suas dúvidas</div>
+    <h2 class="section-title">Perguntas frequentes</h2>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item">
+      <div class="faq-q">Como recebo o livro após a compra? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Imediatamente após a confirmação do pagamento, você recebe um e-mail da Hotmart com o link para baixar o PDF. O acesso é instantâneo — sem espera.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Funciona no celular? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sim! O PDF foi otimizado para qualquer tela. Você pode abrir no celular, tablet ou computador. Basta ter um leitor de PDF (como o Adobe Reader ou o próprio Google) — disponível gratuitamente.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Posso imprimir o livro? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Com certeza! Após baixar o PDF, você pode imprimir quantas vezes quiser para uso pessoal. Muitos leitores preferem tê-lo impresso na cozinha para consultar enquanto cozinham.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">As receitas são para qualquer nível de cozinheiro? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sim! O livro foi desenvolvido para ser acessível a todos, do iniciante ao cozinheiro experiente. As instruções são claras, com medidas exatas e dicas para não errar.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">E se eu não gostar? Tem garantia? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sim! Você tem 7 dias de garantia total. Se por qualquer motivo não ficar satisfeito, basta solicitar o reembolso pela plataforma Hotmart e seu dinheiro é devolvido integralmente. Sem burocracia, sem perguntas.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Posso usar as receitas sendo que moro fora do Brasil? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Com certeza! As receitas usam ingredientes que estão disponíveis no mundo inteiro ou têm fácil substituição. O livro é muito popular entre brasileiros que moram no exterior e querem matar a saudade da comida de casa.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">O pagamento é seguro? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sim, totalmente. O pagamento é processado pela Hotmart, uma das maiores plataformas de produtos digitais do Brasil, com criptografia SSL e todos os protocolos de segurança bancária.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="green-divider">
+
+<!-- ====== MAIN CTA ====== -->
+<section class="cta-section fade-up" id="comprar">
+  <div class="section-label">Última chamada</div>
+  <h2 class="section-title">
+    Essa oferta não vai<br>
+    <span style="color:var(--green)">durar para sempre</span>
+  </h2>
+
+  <div class="countdown-label">⏰ O preço especial encerra em:</div>
+  <div class="big-countdown">
+    <div class="cd-unit">
+      <span class="cd-num" id="cd-h">02</span>
+      <div class="cd-label">Horas</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <span class="cd-num" id="cd-m">00</span>
+      <div class="cd-label">Minutos</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <span class="cd-num" id="cd-s">00</span>
+      <div class="cd-label">Segundos</div>
+    </div>
+  </div>
+
+  <div class="cta-price-block">
+    <span class="price-original">R$173</span>
+    <span class="price-current">R$69</span>
+    <span class="price-currency">reais</span>
+  </div>
+
+  <div class="cta-perks">
+    <span class="cta-perk"><span>⚡</span> Acesso imediato</span>
+    <span class="cta-perk"><span>📱</span> Todos os dispositivos</span>
+    <span class="cta-perk"><span>🔒</span> Pagamento seguro Hotmart</span>
+    <span class="cta-perk"><span>♾️</span> Seu para sempre</span>
+    <span class="cta-perk"><span>🇧🇷</span> 200 receitas brasileiras</span>
+  </div>
+
+  <a href="https://pay.hotmart.com/W104977351F" target="_blank" class="btn-primary" style="font-size:1.2rem;padding:22px 64px;margin-top:8px;">
+    QUERO MINHA CÓPIA AGORA <span class="arrow">→</span>
+  </a>
+
+  <div class="guarantee-box">
+    <div class="guarantee-icon">🛡️</div>
+    <div>
+      <div class="guarantee-title">Garantia de 7 dias sem perguntas</div>
+      <div class="guarantee-text">Se por qualquer razão você não ficar satisfeito, devolvemos 100% do seu dinheiro em até 7 dias. Risco zero. Sua decisão de compra está totalmente protegida.</div>
+    </div>
+  </div>
+
+  <p class="hotmart-note" style="margin-top:24px;">PLATAFORMA SEGURA · DOWNLOAD INSTANTÂNEO · PDF DE ALTA QUALIDADE</p>
+</section>
+
+<footer>
+  <p>© 2025 200 Receitas Brasileiras · Todos os direitos reservados</p>
+  <p>Produto digital distribuído por <strong style="color:#3a4a3a">Hotmart</strong> · receitas.teran.beer</p>
+</footer>
+
+<!-- ====== STICKY CTA ====== -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-left">
+    <div class="sticky-name">200 Receitas Brasileiras</div>
+    <div class="sticky-price"><s>R$173</s> R$69 <span style="color:var(--lime);font-size:0.72rem;font-family:var(--font-d);letter-spacing:0.1em"> — 70% OFF</span></div>
+  </div>
+  <a href="https://pay.hotmart.com/W104977351F" target="_blank" class="btn-sticky">
+    COMPRAR AGORA →
+  </a>
+</div>
+
+<!-- ====== PURCHASE POPUP ====== -->
+<div class="purchase-popup" id="purchase-popup">
+  <div class="popup-top">
+    <span class="popup-dot"></span>
+    <span class="popup-action">Nova compra</span>
+  </div>
+  <div class="popup-name" id="popup-name">Ana · São Paulo</div>
+  <div class="popup-detail" id="popup-detail">Acabou de comprar · há 1 minuto</div>
+</div>
+
+<script>
+// ====== INTERSECTION OBSERVER ======
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// ====== COUNTDOWN ======
+function getOrSetDeadline() {
+  const key = 'receitas_br_v1';
+  let d = localStorage.getItem(key);
+  if (!d) {
+    d = Date.now() + 2 * 60 * 60 * 1000;
+    localStorage.setItem(key, d);
+  }
+  return parseInt(d);
+}
+const deadline = getOrSetDeadline();
+
+function updateCountdown() {
+  let diff = Math.max(0, deadline - Date.now());
+  const h = Math.floor(diff / 3600000); diff -= h * 3600000;
+  const m = Math.floor(diff / 60000);   diff -= m * 60000;
+  const s = Math.floor(diff / 1000);
+  const hh = String(h).padStart(2,'0');
+  const mm = String(m).padStart(2,'0');
+  const ss = String(s).padStart(2,'0');
+  document.getElementById('cd-h').textContent = hh;
+  document.getElementById('cd-m').textContent = mm;
+  document.getElementById('cd-s').textContent = ss;
+  document.getElementById('bar-countdown').textContent = `${hh}:${mm}:${ss}`;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ====== STICKY CTA ======
+const stickyCta = document.getElementById('sticky-cta');
+window.addEventListener('scroll', () => {
+  stickyCta.classList.toggle('visible', window.scrollY > 600);
+});
+
+// ====== LIVE VIEWERS ======
+let viewers = Math.floor(Math.random() * 18) + 18;
+const liveEl = document.getElementById('live-count');
+setInterval(() => {
+  viewers += Math.floor(Math.random() * 5) - 2;
+  viewers = Math.max(12, Math.min(55, viewers));
+  liveEl.textContent = viewers;
+}, 4500);
+
+// ====== PURCHASE POPUP ======
+const buyers = [
+  { name: 'Ana · São Paulo', detail: 'Acabou de comprar · há 1 minuto' },
+  { name: 'Marcos · Rio de Janeiro', detail: 'Está baixando agora · há 2 min' },
+  { name: 'Carla · Belo Horizonte', detail: 'Comprou o livro · há 3 min' },
+  { name: 'Juliana · Curitiba', detail: 'Já tem acesso · há 4 min' },
+  { name: 'Roberto · Salvador', detail: 'Acabou de comprar · há 5 min' },
+  { name: 'Fernanda · Porto Alegre', detail: 'Baixando agora · há 6 min' },
+  { name: 'Diego · Fortaleza', detail: 'Comprou há instantes · há 2 min' },
+  { name: 'Patrícia · Recife', detail: 'Já está cozinhando · há 7 min' },
+];
+let buyerIdx = 0;
+const popup = document.getElementById('purchase-popup');
+function showPopup() {
+  const b = buyers[buyerIdx % buyers.length]; buyerIdx++;
+  document.getElementById('popup-name').textContent = b.name;
+  document.getElementById('popup-detail').textContent = b.detail;
+  popup.classList.add('show');
+  setTimeout(() => popup.classList.remove('show'), 4500);
+}
+setTimeout(() => { showPopup(); setInterval(showPopup, Math.floor(Math.random() * 15000) + 25000); }, 6000);
+
+// ====== FAQ ACCORDION ======
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
